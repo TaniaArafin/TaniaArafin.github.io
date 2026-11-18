@@ -1,0 +1,567 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Umma Tania Arafin — Full-Stack Software Engineer</title>
+<meta name="description" content="Full-Stack Software Engineer with 4+ years building multi-tenant SaaS platforms with Laravel, PostgreSQL, Redis, Vue.js, React and TypeScript." />
+<meta property="og:title" content="Umma Tania Arafin — Full-Stack Software Engineer" />
+<meta property="og:description" content="Laravel · PHP · PostgreSQL · Redis · Vue.js · React · TypeScript" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%234f46e5'/><text x='50' y='66' font-size='46' font-family='Arial' font-weight='700' text-anchor='middle' fill='white'>TA</text></svg>" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --text: #0f172a;
+    --muted: #475569;
+    --border: #e2e8f0;
+    --accent: #4f46e5;
+    --accent-2: #0d9488;
+    --accent-soft: #eef2ff;
+    --shadow: 0 1px 2px rgba(15,23,42,.04), 0 8px 24px rgba(15,23,42,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0b1120;
+      --surface: #111827;
+      --surface-2: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --border: #1f2a3d;
+      --accent: #818cf8;
+      --accent-2: #2dd4bf;
+      --accent-soft: #1e1b4b;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0b1120;
+    --surface: #111827;
+    --surface-2: #1e293b;
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+    --border: #1f2a3d;
+    --accent: #818cf8;
+    --accent-2: #2dd4bf;
+    --accent-soft: #1e1b4b;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.3);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    transition: background .2s, color .2s;
+  }
+  a { color: inherit; text-decoration: none; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 640px) { .container { padding: 0 24px; } }
+
+  /* ---------- Nav ---------- */
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+  .logo { font-weight: 800; font-size: 1.1rem; letter-spacing: -.02em; }
+  .logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 4px; align-items: center; }
+  .nav-links a {
+    font-size: .9rem; font-weight: 500; color: var(--muted);
+    padding: 8px 12px; border-radius: 8px;
+  }
+  .nav-links a:hover { color: var(--text); background: var(--surface-2); }
+  .icon-btn {
+    width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--border);
+    background: var(--surface); color: var(--text); cursor: pointer;
+    display: inline-grid; place-items: center;
+  }
+  .icon-btn:hover { background: var(--surface-2); }
+  .menu-btn { display: none; }
+  @media (max-width: 760px) {
+    .menu-btn { display: inline-grid; }
+    .nav-links .link { display: none; }
+    .nav-links.open {
+      position: absolute; top: 64px; left: 0; right: 0;
+      flex-direction: column; align-items: stretch;
+      background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px 16px 16px;
+    }
+    .nav-links.open .link { display: block; }
+    .nav-links.open .icon-btn.theme { align-self: flex-start; margin-top: 8px; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero { padding: 88px 0 72px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: .8rem; font-weight: 600; color: var(--accent-2);
+    background: color-mix(in srgb, var(--accent-2) 12%, transparent);
+    padding: 6px 12px; border-radius: 999px; margin-bottom: 24px;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent-2) 25%, transparent); }
+  h1 {
+    font-size: clamp(2.2rem, 6vw, 3.8rem); font-weight: 800;
+    letter-spacing: -.035em; line-height: 1.08; margin-bottom: 16px;
+  }
+  .grad {
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .role { font-size: clamp(1.05rem, 2.4vw, 1.3rem); font-weight: 600; color: var(--muted); margin-bottom: 20px; }
+  .lead { max-width: 640px; color: var(--muted); font-size: 1.05rem; margin-bottom: 32px; }
+  .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 600; font-size: .95rem; padding: 12px 20px; border-radius: 12px;
+    border: 1px solid var(--border); background: var(--surface); transition: transform .15s, background .15s;
+  }
+  .btn:hover { transform: translateY(-2px); background: var(--surface-2); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .btn.primary:hover { background: color-mix(in srgb, var(--accent) 88%, #000); }
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 56px; }
+  .stat { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 20px; box-shadow: var(--shadow); }
+  .stat b { display: block; font-size: 1.8rem; font-weight: 800; letter-spacing: -.03em; color: var(--accent); }
+  .stat span { font-size: .85rem; color: var(--muted); }
+  @media (max-width: 760px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* ---------- Sections ---------- */
+  section { padding: 72px 0; }
+  .eyebrow { font-family: "JetBrains Mono", monospace; font-size: .8rem; color: var(--accent); letter-spacing: .08em; text-transform: uppercase; margin-bottom: 8px; }
+  h2 { font-size: clamp(1.7rem, 3.5vw, 2.3rem); font-weight: 800; letter-spacing: -.03em; margin-bottom: 12px; }
+  .section-lead { color: var(--muted); max-width: 620px; margin-bottom: 40px; }
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 18px;
+    padding: 24px; box-shadow: var(--shadow);
+  }
+
+  /* About */
+  .about-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; }
+  .about-grid p { color: var(--muted); margin-bottom: 14px; }
+  .about-grid p:last-child { margin-bottom: 0; }
+  .facts { list-style: none; display: grid; gap: 14px; }
+  .facts li { display: flex; gap: 12px; align-items: flex-start; font-size: .95rem; }
+  .facts .ic { flex: none; width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+  .facts small { display: block; color: var(--muted); font-size: .8rem; }
+  @media (max-width: 760px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* Highlights */
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  @media (max-width: 900px) { .grid-3 { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .grid-3 { grid-template-columns: 1fr; } }
+  .hl { display: flex; flex-direction: column; transition: transform .2s, border-color .2s; }
+  .hl:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+  .hl .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); margin-bottom: 16px; }
+  .hl h3 { font-size: 1.08rem; font-weight: 700; margin-bottom: 8px; letter-spacing: -.01em; }
+  .hl p { color: var(--muted); font-size: .93rem; flex: 1; }
+  .metric { font-family: "JetBrains Mono", monospace; font-size: .8rem; font-weight: 500; color: var(--accent-2); margin-top: 14px; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+  .tag { font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; background: var(--surface-2); color: var(--muted); }
+
+  /* Experience timeline */
+  .timeline { position: relative; display: grid; gap: 24px; padding-left: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
+  .tl-item { position: relative; }
+  .tl-item::before {
+    content: ""; position: absolute; left: -28px; top: 28px; width: 16px; height: 16px; border-radius: 50%;
+    background: var(--surface); border: 3px solid var(--accent);
+  }
+  .tl-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 16px; margin-bottom: 14px; }
+  .tl-head h3 { font-size: 1.15rem; font-weight: 700; }
+  .tl-head .co { color: var(--accent); font-weight: 600; font-size: .95rem; }
+  .tl-head .date { font-family: "JetBrains Mono", monospace; font-size: .8rem; color: var(--muted); background: var(--surface-2); padding: 4px 10px; border-radius: 8px; height: fit-content; }
+  .tl-item ul { list-style: none; display: grid; gap: 10px; }
+  .tl-item li { position: relative; padding-left: 20px; color: var(--muted); font-size: .95rem; }
+  .tl-item li::before { content: ""; position: absolute; left: 4px; top: 10px; width: 6px; height: 6px; border-radius: 50%; background: var(--accent-2); }
+  .tl-item li b { color: var(--text); font-weight: 600; }
+
+  /* Projects */
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .grid-2 { grid-template-columns: 1fr; } }
+  .proj { padding: 0; overflow: hidden; display: flex; flex-direction: column; }
+  .proj-cover { height: 150px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1.6rem; letter-spacing: -.02em; }
+  .cover-1 { background: linear-gradient(135deg, #4f46e5, #0d9488); }
+  .cover-2 { background: linear-gradient(135deg, #db2777, #7c3aed); }
+  .proj-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .proj-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .status { font-size: .7rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--accent-2) 15%, transparent); color: var(--accent-2); }
+  .proj-body p { color: var(--muted); font-size: .93rem; margin: 8px 0 0; flex: 1; }
+  .proj-links { display: flex; gap: 16px; margin-top: 18px; }
+  .proj-links a { font-size: .88rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; }
+  .proj-links a:hover { text-decoration: underline; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 760px) { .skills { grid-template-columns: 1fr; } }
+  .skills h3 { font-size: 1rem; font-weight: 700; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+  .skills h3 .ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: .85rem; font-weight: 500; padding: 6px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-2); }
+
+  /* Education */
+  .edu { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; align-items: center; }
+  .edu h3 { font-size: 1.05rem; font-weight: 700; }
+  .edu p { color: var(--muted); font-size: .92rem; }
+  .gpa { font-family: "JetBrains Mono", monospace; font-weight: 500; color: var(--accent); font-size: .9rem; }
+
+  /* Contact */
+  .contact {
+    text-align: center; padding: 56px 24px;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 12%, var(--surface)), color-mix(in srgb, var(--accent-2) 10%, var(--surface)));
+  }
+  .contact h2 { margin-bottom: 12px; }
+  .contact p { color: var(--muted); max-width: 520px; margin: 0 auto 28px; }
+  .contact .actions { justify-content: center; }
+
+  footer { padding: 32px 0 40px; text-align: center; color: var(--muted); font-size: .85rem; border-top: 1px solid var(--border); }
+
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .reveal { opacity: 1; transform: none; transition: none; }
+    .btn, .hl { transition: none; }
+  }
+  svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .btn svg { width: 18px; height: 18px; }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#top" class="logo">Tania<span>.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a class="link" href="#about">About</a>
+      <a class="link" href="#work">Work</a>
+      <a class="link" href="#experience">Experience</a>
+      <a class="link" href="#projects">Projects</a>
+      <a class="link" href="#skills">Skills</a>
+      <a class="link" href="#contact">Contact</a>
+      <button class="icon-btn theme" id="themeBtn" aria-label="Toggle dark mode">
+        <svg id="themeIcon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </div>
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">
+      <svg viewBox="0 0 24 24"><line x1="4" y1="7" x2="20" y2="7"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="17" x2="20" y2="17"/></svg>
+    </button>
+  </div>
+</nav>
+
+<main id="top">
+  <!-- ================= HERO ================= -->
+  <header class="hero">
+    <div class="container">
+      <div class="badge"><span class="dot"></span> Open to new opportunities</div>
+      <h1>Hi, I'm <span class="grad">Umma Tania Arafin</span></h1>
+      <p class="role">Full-Stack Software Engineer · Laravel · Vue.js · React · TypeScript</p>
+      <p class="lead">
+        I build production web applications and multi-tenant SaaS platforms — from concurrency-safe backend
+        systems and fast PostgreSQL queries to clean, reusable frontend interfaces.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#work">
+          View my work
+          <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+        <a class="btn" href="CV_Umma_Tania_Arafin.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download CV
+        </a>
+        <a class="btn" href="https://github.com/TaniaArafin" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.540 6.44-7A5.44 5.440 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+          GitHub
+        </a>
+        <a class="btn" href="https://www.linkedin.com/in/umma-tania-arafin-27578b1ab" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>4+</b><span>Years of experience</span></div>
+        <div class="stat"><b>~3×</b><span>Faster reporting queries</span></div>
+        <div class="stat"><b>25k+</b><span>Rows per streamed export</span></div>
+        <div class="stat"><b>3–4</b><span>Junior devs mentored</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about">
+    <div class="container">
+      <p class="eyebrow">About me</p>
+      <h2>Backend depth, full-stack delivery</h2>
+      <div class="about-grid reveal">
+        <div class="card">
+          <p>
+            I'm a Software Engineer at <b>Softzino Technologies</b> in Dhaka, where I've spent 4+ years building
+            multi-tenant SaaS products — POS &amp; inventory, healthcare diagnostics, and finance tooling — used by real
+            businesses every day.
+          </p>
+          <p>
+            My strength is the backend: <b>Laravel</b>, <b>PostgreSQL</b> and <b>Redis</b>, designing systems that stay
+            correct under concurrency and fast as data grows. I carry features all the way through to polished
+            <b>Vue.js + TypeScript</b> interfaces, and I build with <b>React, Next.js and Node.js</b> in my own projects.
+          </p>
+          <p>
+            I care about clean architecture, well-tested code, and helping the people around me grow — I review code
+            across a 20-engineer team and mentor junior developers.
+          </p>
+        </div>
+        <ul class="card facts">
+          <li><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+            <div>Software Engineer<small>Softzino Technologies</small></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <div>Dhaka, Bangladesh<small>Open to remote &amp; on-site</small></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span>
+            <div>M.Sc. in CSE (ongoing)<small>BRAC University · CGPA 3.57</small></div></li>
+          <li><span class="ic"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
+            <div>Laravel · Vue · React · TypeScript<small>PostgreSQL · Redis · Docker</small></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WORK HIGHLIGHTS ================= -->
+  <section id="work">
+    <div class="container">
+      <p class="eyebrow">Selected work</p>
+      <h2>Things I've built in production</h2>
+      <p class="section-lead">Most of this lives in private company repositories, so here's what each system does and the impact it had.</p>
+      <div class="grid-3">
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+          <h3>Concurrent Stock Reservation</h3>
+          <p>Reservation engine spanning carts, orders and branch transfers. Polymorphic reservation sources, DTOs, expiry timestamps and Redis locks keep stock correct during peak checkout traffic.</p>
+          <div class="metric">→ prevents overselling under load</div>
+          <div class="tags"><span class="tag">Laravel</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span></div>
+        </article>
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <h3>Query &amp; Reporting Performance</h3>
+          <p>Refactored complex SQL joins, tuned indexes and introduced PostgreSQL materialized views for product listing, inventory and reporting screens.</p>
+          <div class="metric">→ ~3× faster queries</div>
+          <div class="tags"><span class="tag">PostgreSQL</span><span class="tag">Indexing</span><span class="tag">Mat. Views</span></div>
+        </article>
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
+          <h3>Generic Streaming Exporter</h3>
+          <p>A reusable, streaming CSV/XLS/XLSX export pipeline that runs asynchronously, ending out-of-memory crashes and replacing duplicated export code.</p>
+          <div class="metric">→ 25,000+ rows · 8+ modules unified</div>
+          <div class="tags"><span class="tag">Laravel Queues</span><span class="tag">Horizon</span><span class="tag">Streams</span></div>
+        </article>
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+          <h3>Diagnostic Management System</h3>
+          <p>Multi-tenant healthcare platform: patient registration, billing, sample tracking, QR-coded lab reports and role-based route permissions.</p>
+          <div class="metric">→ end-to-end feature delivery</div>
+          <div class="tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">TypeScript</span></div>
+        </article>
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg></div>
+          <h3>Multi-Tenant POS &amp; Inventory</h3>
+          <p>Multi-unit-of-measure selling, product bundles with branch-level stock validation, batch-expiry tracking, serial-number imports and category-aware Excel/CSV bulk imports.</p>
+          <div class="metric">→ core retail workflows</div>
+          <div class="tags"><span class="tag">Laravel</span><span class="tag">Inertia.js</span><span class="tag">Vue.js</span></div>
+        </article>
+        <article class="card hl reveal">
+          <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div>
+          <h3>st-uikit Component Library</h3>
+          <p>Shared Vue.js + Tailwind CSS component library with standardized APIs, adopted across multiple internal products to cut duplicated frontend code.</p>
+          <div class="metric">→ used across products</div>
+          <div class="tags"><span class="tag">Vue.js</span><span class="tag">Tailwind</span><span class="tag">Design system</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EXPERIENCE ================= -->
+  <section id="experience">
+    <div class="container">
+      <p class="eyebrow">Experience</p>
+      <h2>Where I've worked</h2>
+      <p class="section-lead">Four years at one company, growing from associate to engineer on products used by real businesses.</p>
+      <div class="timeline">
+        <div class="tl-item card reveal">
+          <div class="tl-head">
+            <div><h3>Software Engineer</h3><div class="co">Softzino Technologies</div></div>
+            <span class="date">Sep 2025 — Present</span>
+          </div>
+          <ul>
+            <li><b>Stock reservation architecture</b> — concurrent reservations across carts, orders and transfers with Redis locks to prevent overselling.</li>
+            <li><b>Database optimization</b> — ~3× faster listing, inventory and reporting queries via join refactoring, index tuning and materialized views.</li>
+            <li><b>Streaming exporter</b> — async CSV/XLS/XLSX pipeline for 25,000+ row datasets, consolidated across 8+ modules.</li>
+            <li><b>Full-stack delivery</b> — Laravel business logic, REST API contracts and Vue.js/Inertia.js/TypeScript UIs.</li>
+            <li><b>Collaboration &amp; mentorship</b> — code reviews across a 20-engineer team; mentored 3–4 junior developers.</li>
+          </ul>
+        </div>
+        <div class="tl-item card reveal">
+          <div class="tl-head">
+            <div><h3>Associate Software Engineer</h3><div class="co">Softzino Technologies</div></div>
+            <span class="date">Sep 2022 — Sep 2025</span>
+          </div>
+          <ul>
+            <li><b>Diagnostic Management System</b> — patient registration, billing, sample tracking, QR-coded lab reports, role-based permissions.</li>
+            <li><b>POS &amp; inventory</b> — multi-UOM selling, bundles with branch stock validation, batch expiry, serial imports, bulk Excel/CSV imports.</li>
+            <li><b>Petty Cash &amp; RBAC</b> — expense-tracking subdomain with automated vouchers, CASL-based permissions and cache invalidation on role changes.</li>
+            <li><b>st-uikit</b> — reusable Vue.js + Tailwind component library adopted across internal products.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROJECTS ================= -->
+  <section id="projects">
+    <div class="container">
+      <p class="eyebrow">Personal projects</p>
+      <h2>Built on my own time</h2>
+      <p class="section-lead">Where I work with React, Next.js and Node.js.</p>
+      <div class="grid-2">
+        <article class="card proj reveal">
+          <div class="proj-cover cover-1">ProfitHishab</div>
+          <div class="proj-body">
+            <h3>ProfitHishab <span class="status">In progress</span></h3>
+            <div class="tags"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Node.js</span></div>
+            <p>A business-management SaaS for Facebook-commerce sellers: real-time inventory tracking, POS checkout, returned-order management and profit analytics.</p>
+            <div class="proj-links">
+              <!-- TODO: replace with the real repo / live demo link -->
+              <a href="https://github.com/TaniaArafin" target="_blank" rel="noopener">Code →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card proj reveal">
+          <div class="proj-cover cover-2">Music.io</div>
+          <div class="proj-body">
+            <h3>Music.io</h3>
+            <div class="tags"><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span></div>
+            <p>A music streaming and discovery web app with custom playback controls, dynamic routing and component-based playlist layouts.</p>
+            <div class="proj-links">
+              <!-- TODO: replace with the real repo / live demo link -->
+              <a href="https://github.com/TaniaArafin" target="_blank" rel="noopener">Code →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SKILLS ================= -->
+  <section id="skills">
+    <div class="container">
+      <p class="eyebrow">Skills</p>
+      <h2>My toolkit</h2>
+      <p class="section-lead">The technologies I use day to day.</p>
+      <div class="skills">
+        <div class="card reveal">
+          <h3><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg></span>Backend &amp; Architecture</h3>
+          <div class="chips"><span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">Node.js</span><span class="chip">REST APIs</span><span class="chip">Multi-Tenant SaaS</span><span class="chip">Event-Driven</span><span class="chip">SOLID / OOP</span><span class="chip">Service &amp; Repository</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="ic"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></span>Databases &amp; Performance</h3>
+          <div class="chips"><span class="chip">PostgreSQL</span><span class="chip">MySQL</span><span class="chip">Redis</span><span class="chip">Query Optimization</span><span class="chip">Indexing</span><span class="chip">Materialized Views</span><span class="chip">Queues &amp; Horizon</span><span class="chip">Distributed Locks</span><span class="chip">Idempotency</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="ic"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>Frontend</h3>
+          <div class="chips"><span class="chip">TypeScript</span><span class="chip">JavaScript (ES6+)</span><span class="chip">Vue.js</span><span class="chip">Pinia</span><span class="chip">Inertia.js</span><span class="chip">React.js</span><span class="chip">Next.js</span><span class="chip">Tailwind CSS</span><span class="chip">HTML5 / CSS3</span></div>
+        </div>
+        <div class="card reveal">
+          <h3><span class="ic"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></span>Testing &amp; DevOps</h3>
+          <div class="chips"><span class="chip">Pest</span><span class="chip">PHPUnit</span><span class="chip">Vitest</span><span class="chip">Docker</span><span class="chip">CI/CD</span><span class="chip">Git &amp; GitHub</span><span class="chip">Agile / Scrum</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= EDUCATION ================= -->
+  <section id="education" style="padding-top:24px">
+    <div class="container">
+      <p class="eyebrow">Education</p>
+      <h2 style="margin-bottom:32px">BRAC University</h2>
+      <div style="display:grid; gap:16px">
+        <div class="card edu reveal">
+          <div><h3>M.Sc. in Computer Science &amp; Engineering</h3><p>BRAC University · Jan 2024 — Present</p></div>
+          <span class="gpa">CGPA 3.57 / 4.00</span>
+        </div>
+        <div class="card edu reveal">
+          <div><h3>B.Sc. in Computer Science &amp; Engineering</h3><p>BRAC University · 2018 — 2022</p></div>
+          <span class="gpa">CGPA 3.40 / 4.00</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact">
+    <div class="container">
+      <div class="card contact reveal">
+        <p class="eyebrow">Contact</p>
+        <h2>Let's build something together</h2>
+        <p>I'm open to Full-Stack and Backend Software Engineer roles. The fastest way to reach me is email or LinkedIn.</p>
+        <div class="actions">
+          <a class="btn primary" href="mailto:tania642arafin@gmail.com">
+            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            tania642arafin@gmail.com
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/umma-tania-arafin-27578b1ab" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn" href="https://github.com/TaniaArafin" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">© <span id="year"></span> Umma Tania Arafin · Built with HTML &amp; CSS · Hosted on GitHub Pages</div>
+</footer>
+
+<script>
+  // Year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Theme toggle (remembers choice when storage is available)
+  const root = document.documentElement;
+  const themeIcon = document.getElementById('themeIcon');
+  const MOON = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  const SUN = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const isDark = () => root.dataset.theme
+    ? root.dataset.theme === 'dark'
+    : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const paintIcon = () => { themeIcon.innerHTML = isDark() ? SUN : MOON; };
+  try { const saved = localStorage.getItem('theme'); if (saved) root.dataset.theme = saved; } catch (e) {}
+  paintIcon();
+  document.getElementById('themeBtn').addEventListener('click', () => {
+    root.dataset.theme = isDark() ? 'light' : 'dark';
+    try { localStorage.setItem('theme', root.dataset.theme); } catch (e) {}
+    paintIcon();
+  });
+
+  // Mobile menu
+  const navLinks = document.getElementById('navLinks');
+  document.getElementById('menuBtn').addEventListener('click', () => navLinks.classList.toggle('open'));
+  navLinks.querySelectorAll('.link').forEach(a => a.addEventListener('click', () => navLinks.classList.remove('open')));
+
+  // Reveal on scroll
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    els.forEach(el => io.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('in'));
+  }
+</script>
+</body>
+</html>
