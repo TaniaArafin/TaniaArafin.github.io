@@ -218,6 +218,8 @@
   .proj-cover { height: 150px; display: grid; place-items: center; color: #fff; font-weight: 800; font-size: 1.6rem; letter-spacing: -.02em; }
   .cover-1 { background: linear-gradient(135deg, #4f46e5, #0d9488); }
   .cover-2 { background: linear-gradient(135deg, #db2777, #7c3aed); }
+  .cover-3 { background: linear-gradient(135deg, #2563eb, #0891b2); }
+  .cover-4 { background: linear-gradient(135deg, #059669, #65a30d); }
   .proj-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
   .proj-body h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
   .status { font-size: .7rem; font-weight: 700; padding: 3px 8px; border-radius: 999px; background: color-mix(in srgb, var(--accent-2) 15%, transparent); color: var(--accent-2); }
@@ -329,19 +331,22 @@
   <section id="about">
     <div class="container">
       <p class="eyebrow">About me</p>
-      <h2>Backend depth, full-stack delivery</h2>
+      <h2>A bit about me</h2>
       <div class="about-grid reveal">
         <div class="card about-card">
           <p>
-            I'm a Software Engineer at <b>Softzino Technologies</b> with 4+ years of experience building
-            production-grade SaaS applications.
+            I've spent the last four years at <b>Softzino Technologies</b> working on software that shops and
+            clinics use every day: the <b>Hishabi</b> POS, the <b>JibonSheba</b> diagnostic system, and more recently
+            the single login that connects all our products.
           </p>
           <p>
-            My expertise lies in <b>Laravel</b>, <b>PostgreSQL</b>, and <b>Redis</b>, with frontend experience in
-            <b>Vue.js</b>, <b>React.js</b>, and <b>TypeScript</b>.
+            Most of my work is on the backend with <b>Laravel</b>, <b>PostgreSQL</b> and <b>Redis</b>. I've made checkout stop
+            overselling stock, made slow reports fast and made big exports stop crashing. I like owning a feature from
+            start to finish, though, so I build the screens too, in <b>Vue</b> and, on the platform team, <b>React</b>.
           </p>
           <p>
-            I believe in clean architecture, well-tested code, collaboration, and helping fellow developers grow.
+            I also help 3–4 junior developers on my team by reviewing their code and sitting with them when they're stuck.
+            Outside work, I'm doing my master's at BRAC University and slowly building ProfitHishab, a tool for Facebook sellers.
           </p>
           <div class="about-tags">
             <span class="about-tag">4+ Years Experience</span>
@@ -451,15 +456,37 @@
   <section id="projects">
     <div class="container">
       <p class="eyebrow">Projects</p>
-      <h2>Featured projects</h2>
-      <p class="section-lead">Products I've designed and built end to end.</p>
+      <h2>Products I've worked on</h2>
+      <p class="section-lead">Two live products I help build at Softzino, and two side projects of my own. The company code is private, but you can see the products themselves.</p>
       <div class="grid-2">
+        <article class="card proj reveal">
+          <div class="proj-cover cover-3">Hishabi</div>
+          <div class="proj-body">
+            <h3>Hishabi <span class="status">Live</span></h3>
+            <div class="tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">PostgreSQL</span></div>
+            <p>POS and inventory software for retail shops and pharmacies, where each business gets its own database. I've worked on checkout, exchanges and refunds, discounts, stock reservation, bulk product import and exports.</p>
+            <div class="proj-links">
+              <a href="https://hishabi.com/" target="_blank" rel="noopener">Visit site →</a>
+            </div>
+          </div>
+        </article>
+        <article class="card proj reveal">
+          <div class="proj-cover cover-4">JibonSheba</div>
+          <div class="proj-body">
+            <h3>JibonSheba <span class="status">Live</span></h3>
+            <div class="tags"><span class="tag">Laravel</span><span class="tag">Vue.js</span><span class="tag">PostgreSQL</span></div>
+            <p>Software for diagnostic centres: patient registration, billing, sample tracking and lab reports with QR codes. I built features across that whole flow, plus petty cash and role permissions.</p>
+            <div class="proj-links">
+              <a href="https://jibonsheba.com/" target="_blank" rel="noopener">Visit site →</a>
+            </div>
+          </div>
+        </article>
         <article class="card proj reveal">
           <div class="proj-cover cover-1">ProfitHishab</div>
           <div class="proj-body">
-            <h3>ProfitHishab <span class="status">In progress</span></h3>
+            <h3>ProfitHishab <span class="status">Side project</span></h3>
             <div class="tags"><span class="tag">React.js</span><span class="tag">Next.js</span><span class="tag">Node.js</span></div>
-            <p>A business-management SaaS for Facebook-commerce sellers: real-time inventory tracking, POS checkout, returned-order management and profit analytics.</p>
+            <p>A business management app for Facebook sellers, covering stock tracking, sales, returned orders and profit reports.</p>
             <div class="proj-links">
               <!-- TODO: replace with the real repo / live demo link -->
               <a href="https://github.com/TaniaArafin" target="_blank" rel="noopener">Code →</a>
@@ -469,9 +496,9 @@
         <article class="card proj reveal">
           <div class="proj-cover cover-2">Music.io</div>
           <div class="proj-body">
-            <h3>Music.io</h3>
+            <h3>Music.io <span class="status">Side project</span></h3>
             <div class="tags"><span class="tag">React.js</span><span class="tag">JavaScript</span><span class="tag">Tailwind CSS</span></div>
-            <p>A music streaming and discovery web app with custom playback controls, dynamic routing and component-based playlist layouts.</p>
+            <p>A music streaming app with custom playback controls, playlists and page routing.</p>
             <div class="proj-links">
               <!-- TODO: replace with the real repo / live demo link -->
               <a href="https://github.com/TaniaArafin" target="_blank" rel="noopener">Code →</a>
